@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "Setting up project..."
-mkdir -p src data output
+mkdir -p src data 
 chmod +x setup_project.sh # make the script executable 
 
 # create student.csv untill encountering EOF --> end of file
@@ -39,8 +39,3 @@ cat src/data_analysis_function.py
 
 # output/
 mkdir -p output
-cat > output/analysis_report.txt << 'EOF'
-# output
-
-EOF
-cat output/analysis_report.txt
