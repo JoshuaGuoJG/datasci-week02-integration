@@ -1,6 +1,5 @@
 import os
 """Basic student data analysis script."""
-
 def load_students(filename):
     """Load student data from CSV file."""
     with open(filename, 'r') as f:
@@ -20,29 +19,17 @@ def load_students(filename):
 
     return students
 
-def load_students(filename):
-    """Load student data from CSV file."""
-    with open(filename, 'r') as f:
-        lines = f.readlines()
+def calculate_average_grade(students):
+    """Calculate average grade from student data."""
+    if not students:
+        return 0.0
 
-    students = []
-    for line in lines[1:]:  # Skip header
-        line = line.strip()
-        if line:
-            name, age, grade, subject = line.split(',')
-            students.append({
-                'name': name,
-                'age': int(age),
-                'grade': int(grade),
-                'subject': subject
-            })
-
-    return students
+    total = sum(student['grade'] for student in students)
+    return total / len(students)
 
 def count_math_students(students):
     """Count students enrolled in Math."""
     return sum(1 for student in students if student['subject'] == 'Math')
-
 
 def generate_report(students):
     """Generate formatted analysis report."""
@@ -61,7 +48,6 @@ Subject Distribution:
   Science: {total - math_count}
 """
     return report
-
 
 def save_report(report, filename):
     """Save report to file."""
