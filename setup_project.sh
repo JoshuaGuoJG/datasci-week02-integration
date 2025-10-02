@@ -1,10 +1,16 @@
 #!/bin/bash
-echo "Setting up project..."
-mkdir -p src data 
-chmod +x setup_project.sh # make the script executable 
+cat > .gitignore << 'EOF'
+# Python
+__pycache__/
+*.pyc
+.venv/
 
-# create student.csv untill encountering EOF --> end of file
-cat > data/student.csv << 'EOF'
+# OS files
+.DS_Store
+EOF
+echo "✓ Created .gitignore"
+
+cat > data/students.csv << 'EOF'
 name,age,grade,subject
 Alice,20,85,Math
 Bob,19,92,Science
@@ -15,27 +21,52 @@ Frank,19,82,History
 Grace,21,91,Math
 Henry,20,76,Science
 EOF
+echo "✓ Created data/students.csv with 8 records"
 
-cat data/student.csv
+echo "Setting up project..."
+mkdir -p src data output
+chmod +x setup_project.sh # make the script executable 
 
-# src/data_analysis.py
+# create student.csv
 cat > src/data_analysis.py << 'EOF'
-# data analysis to do...
+"""Basic student data analysis script."""
 
+def load_students(filename):
+    """Load student data from CSV file."""
+    # TODO: Implement CSV loading
+    pass
+
+def calculate_average_grade(students):
+    """Calculate average grade from student data."""
+    # TODO: Implement average calculation
+    pass
+
+def count_math_students(students):
+    """Count students in Math."""
+    # TODO: Implement counting
+    pass
+
+def generate_report(students):
+    """Generate formatted report."""
+    # TODO: Implement report generation
+    pass
+
+def save_report(report, filename):
+    """Save report to file."""
+    # TODO: Implement file saving
+    pass
+
+def main():
+    """Main execution function."""
+    # TODO: Orchestrate the analysis
+    pass
+
+if __name__ == "__main__":
+    main()
 EOF
+echo "✓ Created src/data_analysis.py with function stubs"
 
-cat src/data_analysis.py
-
-# src/data_analysis_function.py
-cat > src/data_analysis_function.py << 'EOF'
-# functions for data analysis
-
+cat > requirements.txt << 'EOF'
+# No external packages required for basic functionality
 EOF
-
-touch .gitignore # simple way to create an empty .gitignore file
-touch requirements.txt # simple way to create an empty requirements.txt file
-
-cat src/data_analysis_function.py
-
-# output/
-mkdir -p output
+echo "✓ Created requirements.txt"
